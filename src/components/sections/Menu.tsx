@@ -147,7 +147,7 @@ export default function Menu() {
             <div className="content-container relative z-10 mt-12 sm:mt-16 mb-12 sm:mb-16">
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     {/* Offer 1 — Breakfast Combo */}
-                    <a href="#reservation" className="offer-card group relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#f5e6d3] to-[#ede0d0] transition-all duration-500 hover:shadow-lg hover:-translate-y-0.5">
+                    <a href="#reservation" className="offer-card invisible invisible group relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#f5e6d3] to-[#ede0d0] transition-all duration-500 hover:shadow-lg hover:-translate-y-0.5">
                         <div className="relative h-40 sm:h-36 overflow-hidden">
                             <Image
                                 src="https://images.unsplash.com/photo-1495147466023-ac5c588e2e94?q=80&w=600&auto=format&fit=crop"
@@ -179,7 +179,7 @@ export default function Menu() {
                     </a>
 
                     {/* Offer 2 — Lunch Deal */}
-                    <a href="#reservation" className="offer-card group relative overflow-hidden rounded-2xl bg-gradient-to-br from-bone to-white transition-all duration-500 hover:shadow-lg hover:-translate-y-0.5">
+                    <a href="#reservation" className="offer-card invisible invisible group relative overflow-hidden rounded-2xl bg-gradient-to-br from-bone to-white transition-all duration-500 hover:shadow-lg hover:-translate-y-0.5">
                         <div className="relative h-40 sm:h-36 overflow-hidden">
                             <Image
                                 src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=600&auto=format&fit=crop"
@@ -211,7 +211,7 @@ export default function Menu() {
                     </a>
 
                     {/* Offer 3 — Office Catering */}
-                    <a href="#reservation" className="offer-card group relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#2a2320] to-[#1a1614] transition-all duration-500 hover:shadow-lg hover:-translate-y-0.5">
+                    <a href="#reservation" className="offer-card invisible invisible group relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#2a2320] to-[#1a1614] transition-all duration-500 hover:shadow-lg hover:-translate-y-0.5">
                         <div className="relative h-40 sm:h-36 overflow-hidden">
                             <Image
                                 src="https://images.unsplash.com/photo-1576107232684-1279f390859f?q=80&w=600&auto=format&fit=crop"
@@ -280,7 +280,7 @@ export default function Menu() {
 
                 <div className="menu-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-16">
                     {filteredMenu.map((item, idx) => (
-                        <div key={`${item.name}-${idx}`} className="menu-card group cursor-pointer">
+                        <div key={`${item.name}-${idx}`} className="menu-card invisible invisible group cursor-pointer">
                             <div className="relative aspect-[4/3] w-full overflow-hidden bg-bone mb-5">
                                 <Image
                                     src={getPlaceholderImage(item.category)}

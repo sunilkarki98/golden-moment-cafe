@@ -57,7 +57,7 @@ export default function Contact() {
                     {/* Left Column */}
                     <div>
                         {/* Eyebrow */}
-                        <div className="contact-anim flex items-center gap-4 mb-6">
+                        <div className="contact-anim invisible flex items-center gap-4 mb-6">
                             <span className="w-8 h-px bg-accent"></span>
                             <span className="font-sans text-[11px] uppercase tracking-[0.2em] text-accent font-semibold">
                                 Get in touch
@@ -65,17 +65,17 @@ export default function Contact() {
                         </div>
 
                         {/* Heading */}
-                        <h2 className="contact-anim font-serif text-[clamp(2.5rem,5vw,3.5rem)] leading-[1.1] text-text mb-4">
+                        <h2 className="contact-anim invisible font-serif text-[clamp(2.5rem,5vw,3.5rem)] leading-[1.1] text-text mb-4">
                             Come say <span className="italic text-accent">hello.</span>
                         </h2>
 
                         {/* Subtitle */}
-                        <p className="contact-anim font-sans text-[15px] leading-[1.7] text-text-muted mb-10 max-w-[480px]">
+                        <p className="contact-anim invisible font-sans text-[15px] leading-[1.7] text-text-muted mb-10 max-w-[480px]">
                             We&apos;d love to hear from you. Visit us, give us a call, or send us a message on WhatsApp — we&apos;re here to help.
                         </p>
 
                         {/* Google Rating */}
-                        <div className="contact-anim flex items-center gap-3 mb-10">
+                        <div className="contact-anim invisible flex items-center gap-3 mb-10">
                             <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm border border-border">
                                 <svg className="w-4 h-4" viewBox="0 0 24 24">
                                     <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -190,7 +190,7 @@ export default function Contact() {
                     </div>
 
                     {/* Right Column: Map */}
-                    <div className="contact-anim relative w-full h-[350px] lg:h-full lg:min-h-[480px] rounded-3xl overflow-hidden bg-bone shadow-md border border-border">
+                    <div className="contact-anim invisible relative w-full h-[350px] lg:h-full lg:min-h-[480px] rounded-3xl overflow-hidden bg-bone shadow-md border border-border">
                         <iframe
                             src="https://maps.google.com/maps?q=Shop%204%2F14%20Moore%20St%2C%20Canberra%20ACT%202601%2C%20Australia&t=&z=15&ie=UTF8&iwloc=&output=embed"
                             width="100%"

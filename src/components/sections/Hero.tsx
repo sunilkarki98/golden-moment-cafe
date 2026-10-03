@@ -36,26 +36,26 @@ export default function Hero() {
         // Staggered text reveals
         tl.fromTo(
             ".reveal-eyebrow",
-            { y: 20, opacity: 0 },
-            { y: 0, opacity: 1, duration: 1 },
+            { y: 20, autoAlpha: 0 },
+            { y: 0, autoAlpha: 1, duration: 1 },
             0.5
         )
         .fromTo(
             ".reveal-heading",
-            { y: "120%", opacity: 0 },
-            { y: "0%", opacity: 1, duration: 1.2 },
+            { y: "120%", autoAlpha: 0 },
+            { y: "0%", autoAlpha: 1, duration: 1.2 },
             0.6
         )
         .fromTo(
             ".reveal-text",
-            { y: 20, opacity: 0 },
-            { y: 0, opacity: 1, duration: 1, stagger: 0.2 },
+            { y: 20, autoAlpha: 0 },
+            { y: 0, autoAlpha: 1, duration: 1, stagger: 0.2 },
             0.8
         )
         .fromTo(
             ".reveal-footer",
-            { opacity: 0 },
-            { opacity: 1, duration: 1.5 },
+            { autoAlpha: 0 },
+            { autoAlpha: 1, duration: 1.5 },
             1.2
         );
     }, { scope: heroRef });
@@ -88,13 +88,13 @@ export default function Hero() {
             <div className="mx-auto flex min-h-[85svh] max-w-[1440px] flex-col justify-end px-6 pb-10 pt-24 sm:px-8 sm:pb-12 lg:px-12 lg:pb-14">
                 <div className="max-w-[760px]">
                     <div className="mb-5 overflow-hidden sm:mb-6">
-                        <span className="reveal-eyebrow block label-mini text-white/75">
+                        <span className="reveal-eyebrow invisible block label-mini text-white/75">
                             Canberra · Australia
                         </span>
                     </div>
 
                     <div className="overflow-hidden pb-4">
-                        <div className="reveal-heading relative opacity-0">
+                        <div className="reveal-heading relative invisible">
                             {/* 3D extrusion layer (behind) */}
                             <h1
                                 aria-hidden="true"
@@ -135,19 +135,19 @@ export default function Hero() {
                     </div>
 
                     <div className="mt-7 sm:mt-8">
-                        <p className="reveal-text max-w-[440px] font-sans text-base leading-[1.7] text-white/80 sm:text-[17px]">
+                        <p className="reveal-text invisible max-w-[440px] font-sans text-base leading-[1.7] text-white/80 sm:text-[17px]">
                             Breakfast, burgers, curries and great coffee — served
                             daily from 7 AM in the heart of Canberra.
                         </p>
 
-                        <p className="reveal-text mt-6 font-signature text-[clamp(1.8rem,3.5vw,2.5rem)] text-accent/90 sm:mt-8">
+                        <p className="reveal-text invisible mt-6 font-signature text-[clamp(1.8rem,3.5vw,2.5rem)] text-accent/90 sm:mt-8">
                             come, stay awhile
                         </p>
 
                         <div className="mt-6 flex flex-col gap-4 sm:mt-8 sm:flex-row sm:items-center sm:gap-8">
                             <a
                                 href="#menu"
-                                className="reveal-text group relative inline-flex w-fit items-center gap-3 border-b border-white/60 pb-2 label-micro text-white transition-colors duration-300 hover:border-white"
+                                className="reveal-text invisible group relative inline-flex w-fit items-center gap-3 border-b border-white/60 pb-2 label-micro text-white transition-colors duration-300 hover:border-white"
                             >
                                 <span className="absolute -inset-x-4 -inset-y-4" aria-hidden="true" />
                                 <span>Explore the menu</span>
@@ -163,7 +163,7 @@ export default function Hero() {
 
                             <a
                                 href="#reservation"
-                                className="reveal-text group relative inline-flex w-fit items-center gap-3 pb-2 label-micro text-white/60 transition-colors duration-300 hover:text-white"
+                                className="reveal-text invisible group relative inline-flex w-fit items-center gap-3 pb-2 label-micro text-white/60 transition-colors duration-300 hover:text-white"
                             >
                                 <span className="absolute -inset-x-4 -inset-y-4" aria-hidden="true" />
                                 <span>Reserve a table</span>
@@ -181,7 +181,7 @@ export default function Hero() {
                 </div>
 
                 {/* Utility footer — address + hours */}
-                <div className="reveal-footer mt-8 flex flex-col gap-3 border-t border-white/20 pt-4 sm:mt-16 sm:flex-row sm:items-center sm:justify-between">
+                <div className="reveal-footer invisible mt-8 flex flex-col gap-3 border-t border-white/20 pt-4 sm:mt-16 sm:flex-row sm:items-center sm:justify-between">
                     <div className="flex items-center gap-2 label-micro text-white/55">
                         <svg className="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />

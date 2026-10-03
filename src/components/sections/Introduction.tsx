@@ -48,8 +48,8 @@ export default function Introduction() {
         // 2 — Eyebrow
         tl.fromTo(
             ".intro-eyebrow",
-            { y: 12, opacity: 0 },
-            { y: 0, opacity: 1, duration: 0.8 },
+            { y: 12, autoAlpha: 0 },
+            { y: 0, autoAlpha: 1, duration: 0.8 },
             0.4
         );
 
@@ -64,24 +64,24 @@ export default function Introduction() {
         // 4 — Body copy
         tl.fromTo(
             ".intro-body",
-            { y: 16, opacity: 0 },
-            { y: 0, opacity: 1, duration: 1 },
+            { y: 16, autoAlpha: 0 },
+            { y: 0, autoAlpha: 1, duration: 1 },
             0.9
         );
 
         // 5 — Handwritten accent
         tl.fromTo(
             ".intro-script",
-            { y: 10, opacity: 0 },
-            { y: 0, opacity: 1, duration: 0.9 },
+            { y: 10, autoAlpha: 0 },
+            { y: 0, autoAlpha: 1, duration: 0.9 },
             1.15
         );
 
         // 6 — Image caption
         tl.fromTo(
             ".intro-caption",
-            { opacity: 0 },
-            { opacity: 1, duration: 1 },
+            { autoAlpha: 0 },
+            { autoAlpha: 1, duration: 1 },
             1.3
         );
     }, { scope: sectionRef });
@@ -99,7 +99,7 @@ export default function Introduction() {
                     {/* ── Text Column ── */}
                     <div className="lg:col-span-6 lg:pr-12 xl:pr-20">
                         {/* Eyebrow */}
-                        <span className="intro-eyebrow eyebrow block text-text-muted">
+                        <span className="intro-eyebrow invisible eyebrow block text-text-muted">
                             The Restaurant
                         </span>
 
@@ -123,14 +123,14 @@ export default function Introduction() {
                         </h2>
 
                         {/* Body */}
-                        <p className="intro-body mt-8 max-w-[480px] font-sans text-[15px] leading-[1.8] text-text-secondary sm:mt-10 sm:text-base">
+                        <p className="intro-body invisible mt-8 max-w-[480px] font-sans text-[15px] leading-[1.8] text-text-secondary sm:mt-10 sm:text-base">
                             Golden Moment is a contemporary restaurant in Canberra,
                             bringing together seasonal cooking, thoughtful hospitality,
                             and the simple pleasure of sharing a table.
                         </p>
 
                         {/* Script accent */}
-                        <p className="intro-script mt-8 font-signature text-[clamp(1.5rem,3vw,2.125rem)] text-accent sm:mt-10">
+                        <p className="intro-script invisible mt-8 font-signature text-[clamp(1.5rem,3vw,2.125rem)] text-accent sm:mt-10">
                             come, stay awhile
                         </p>
                     </div>
@@ -149,7 +149,7 @@ export default function Introduction() {
                             </div>
 
                             {/* Caption */}
-                            <div className="intro-caption mt-5 flex items-center justify-between border-t border-border pt-4 label-micro text-text-muted">
+                            <div className="intro-caption invisible mt-5 flex items-center justify-between border-t border-border pt-4 label-micro text-text-muted">
                                 <span>Canberra · ACT</span>
                                 <span>Est. 2026</span>
                             </div>

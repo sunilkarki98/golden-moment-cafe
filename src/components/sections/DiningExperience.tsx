@@ -90,7 +90,7 @@ export default function DiningExperience() {
 
                 {/* ── LEFT: Landscape Image (50%) ── */}
                 <div className="relative w-full lg:w-1/2 min-h-[400px] sm:min-h-[460px] lg:min-h-full overflow-hidden">
-                    <div className="anim-img absolute inset-0">
+                    <div className="anim-img invisible absolute inset-0">
                         <Image
                             src="/images/place.png"
                             alt="Canberra landscape at golden hour"
@@ -108,13 +108,13 @@ export default function DiningExperience() {
                     {/* Overlays on landscape */}
                     <div className="relative z-10 flex flex-col justify-between h-full min-h-[400px] sm:min-h-[460px] lg:min-h-[640px] p-7 sm:p-10">
                         {/* Top: GOLDEN MOMENT */}
-                        <div className="anim-fade">
+                        <div className="anim-fade invisible">
                             <span className="label-micro tracking-[0.25em] text-white/55">
                                 Golden Moment
                             </span>
                         </div>
                         {/* Bottom: SEASONAL · LOCAL · SHARED */}
-                        <div className="anim-fade flex items-center gap-4">
+                        <div className="anim-fade invisible flex items-center gap-4">
                             <span className="label-micro text-white/45">Seasonal</span>
                             <span aria-hidden="true" className="w-1 h-1 rounded-full bg-white/25" />
                             <span className="label-micro text-white/45">Local</span>
@@ -131,7 +131,7 @@ export default function DiningExperience() {
                         <div className="max-w-[480px] mx-auto lg:mx-0">
 
                             {/* Eyebrow */}
-                            <div className="anim-fade flex items-center gap-4 mb-8">
+                            <div className="anim-fade invisible flex items-center gap-4 mb-8">
                                 <span className="w-7 h-px bg-[#c4956a]/50" />
                                 <span className="label-micro text-[#c4956a] tracking-[0.2em]">
                                     The Experience
@@ -153,7 +153,7 @@ export default function DiningExperience() {
                             </h2>
 
                             {/* Body */}
-                            <p className="anim-fade font-sans text-[14px] sm:text-[14.5px] leading-[1.85] text-[#c9b89f]/70">
+                            <p className="anim-fade invisible font-sans text-[14px] sm:text-[14.5px] leading-[1.85] text-[#c9b89f]/70">
                                 Relaxed in Canberra, Golden Moment is more than
                                 a café — it&apos;s a place to slow down, connect and
                                 savour the simple things. Great coffee, seasonal food
@@ -163,7 +163,7 @@ export default function DiningExperience() {
 
                             {/* Handwritten signature */}
                             <p
-                                className="anim-fade mt-8 text-[1.4rem] sm:text-[1.6rem] text-[#c4956a] -rotate-[2deg] origin-left"
+                                className="anim-fade invisible mt-8 text-[1.4rem] sm:text-[1.6rem] text-[#c4956a] -rotate-[2deg] origin-left"
                                 style={{ fontFamily: 'var(--font-signature, "Segoe Print", "Bradley Hand", cursive)' }}
                             >
                                 made here, enjoyed slowly.
@@ -172,7 +172,7 @@ export default function DiningExperience() {
                             {/* CTA Button — solid gold pill */}
                             <Link
                                 href="#visit"
-                                className="anim-fade group inline-flex items-center gap-3 mt-10 bg-[#c4956a] text-[#1a1512] rounded-full px-8 py-3.5 transition-all duration-300 hover:bg-[#d4a87a] hover:scale-[1.02] active:scale-[0.98]"
+                                className="anim-fade invisible group inline-flex items-center gap-3 mt-10 bg-[#c4956a] text-[#1a1512] rounded-full px-8 py-3.5 transition-all duration-300 hover:bg-[#d4a87a] hover:scale-[1.02] active:scale-[0.98]"
                             >
                                 <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.15em]">
                                     Our Place
@@ -196,7 +196,7 @@ export default function DiningExperience() {
 
                 {/* ── FLOATING INTERIOR IMAGE (positioned on the parent, not clipped) ── */}
                 <div
-                    className="anim-img float-img hidden lg:block absolute z-30"
+                    className="anim-img invisible float-img hidden lg:block absolute z-30"
                     style={{
                         left: "50%",
                         top: "50%",
@@ -225,7 +225,7 @@ export default function DiningExperience() {
 
                 {/* ── Vertical "01 / 03" label ── */}
                 <div
-                    className="anim-fade hidden lg:block absolute z-30 left-4 top-1/2 -translate-y-1/2"
+                    className="anim-fade invisible hidden lg:block absolute z-30 left-4 top-1/2 -translate-y-1/2"
                 >
                     <span
                         className="label-micro text-white/30 tracking-[0.2em] text-[10px]"
