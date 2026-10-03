@@ -66,7 +66,7 @@ export default function Contact() {
 
                         {/* Heading */}
                         <h2 className="contact-anim invisible font-serif text-[clamp(2.5rem,5vw,3.5rem)] leading-[1.1] text-text mb-4">
-                            Come say <span className="italic text-accent">hello.</span>
+                            Let us <span className="italic text-accent">serve you.</span>
                         </h2>
 
                         {/* Subtitle */}

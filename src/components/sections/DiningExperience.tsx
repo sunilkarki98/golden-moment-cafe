@@ -213,11 +213,11 @@ export default function DiningExperience() {
                             className="object-cover"
                         />
                     </div>
-                    <div className="mt-3 text-center">
+                    <div className="mt-3 text-center bg-[#1a1512]/90 backdrop-blur-sm py-2.5 px-3 rounded-xl border border-white/10 shadow-lg mx-auto w-max">
                         <p className="font-sans text-[10px] uppercase tracking-[0.18em] text-[#f4efe6]/90 font-semibold drop-shadow-sm">
                             Inside Golden Moment
                         </p>
-                        <p className="font-sans text-[10px] text-[#c9b89f]/80 mt-0.5 drop-shadow-sm">
+                        <p className="font-sans text-[10px] text-[#c9b89f]/80 mt-1 drop-shadow-sm">
                             Canberra · Est. 2024
                         </p>
                     </div>
