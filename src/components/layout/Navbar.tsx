@@ -34,7 +34,7 @@ export default function Navbar() {
                     href="/"
                     className="flex items-center gap-3"
                 >
-                    <div className="relative w-9 h-9 rounded-full overflow-hidden border border-white/20 shrink-0">
+                    <div className="relative w-12 h-12 -my-2 rounded-full overflow-hidden border border-white/20 shrink-0 shadow-lg">
                         <img
                             src="/logo/Logo _cafe.jpeg"
                             alt="Golden Moment Logo"

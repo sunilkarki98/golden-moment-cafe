@@ -252,10 +252,10 @@ export default function Menu() {
                             <button
                                 key={cat}
                                 onClick={() => setActiveTab(cat)}
-                                className={`label-micro whitespace-nowrap px-6 py-2.5 rounded-full transition-all duration-300 border ${
+                                className={`label-micro whitespace-nowrap px-6 py-2.5 rounded-full transition-all duration-300 ${
                                     activeTab === cat
-                                        ? "bg-accent border-accent text-[#1a1512] shadow-sm"
-                                        : "bg-accent/10 border-accent/20 text-[#8b6914] hover:bg-accent/20 hover:border-accent/40 hover:text-accent"
+                                        ? "bg-accent text-[#1a1512] shadow-md font-bold border border-accent"
+                                        : "bg-transparent text-text-muted hover:text-accent border border-transparent"
                                 }`}
                             >
                                 {cat}
