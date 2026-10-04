@@ -133,7 +133,7 @@ export default function Footer() {
 
                             {/* Book Button */}
                             <Link
-                                href="#book"
+                                href="#contact"
                                 className="group flex items-center justify-center gap-3 bg-[#d2a373] text-[#110e0c] self-start rounded-full py-3.5 px-6 transition-transform hover:scale-[1.02] active:scale-[0.98]"
                             >
                                 <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.15em]">Book A Table</span>

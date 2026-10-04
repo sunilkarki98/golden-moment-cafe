@@ -6,9 +6,9 @@ import { useState } from "react";
 
 const navItems = [
     { label: "Menu", href: "#menu" },
-    { label: "Our Story", href: "#story" },
+    { label: "Our Story", href: "#introduction" },
     { label: "Catering", href: "#catering" },
-    { label: "Visit", href: "#canberra" },
+    { label: "Visit", href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -64,7 +64,7 @@ export default function Navbar() {
 
                     {/* Reservation */}
                     <a
-                        href="#reservation"
+                        href="#contact"
                         className="
               rounded-pill
               bg-accent
@@ -131,7 +131,7 @@ export default function Navbar() {
                         ))}
 
                         <a
-                            href="#reservation"
+                            href="#contact"
                             onClick={() => setOpen(false)}
                             className="
                 rounded-pill

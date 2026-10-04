@@ -162,7 +162,7 @@ export default function Hero() {
                             </a>
 
                             <a
-                                href="#reservation"
+                                href="#contact"
                                 className="reveal-text invisible group relative inline-flex w-fit items-center gap-3 pb-2 label-micro text-white/60 transition-colors duration-300 hover:text-white"
                             >
                                 <span className="absolute -inset-x-4 -inset-y-4" aria-hidden="true" />
