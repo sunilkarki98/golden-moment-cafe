@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { List, X } from "@phosphor-icons/react";
 import { useState } from "react";
 
@@ -35,10 +36,12 @@ export default function Navbar() {
                     className="flex items-center gap-3"
                 >
                     <div className="relative w-12 h-12 -my-2 rounded-full overflow-hidden border border-white/20 shrink-0 shadow-lg">
-                        <img
+                        <Image
                             src="/logo/Logo _cafe.jpeg"
                             alt="Golden Moment Logo"
-                            className="w-full h-full object-cover"
+                            fill
+                            sizes="48px"
+                            className="object-cover"
                         />
                     </div>
                     <span className="font-display text-xl tracking-tight md:text-2xl">Golden Moment</span>
