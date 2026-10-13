@@ -88,45 +88,14 @@ export default function Hero() {
             <div className="mx-auto flex min-h-[85svh] max-w-[1440px] flex-col justify-end px-6 pb-10 pt-24 sm:px-8 sm:pb-12 lg:px-12 lg:pb-14">
                 <div className="max-w-[760px]">
                     <div className="mb-5 overflow-hidden sm:mb-6">
-                        <span className="reveal-eyebrow invisible block label-mini text-white/75">
+                        <span className="reveal-eyebrow opacity-0 block label-mini text-white/75">
                             Canberra · Australia
                         </span>
                     </div>
 
                     <div className="overflow-hidden pb-4">
-                        <div className="reveal-heading relative invisible">
-                            {/* 3D extrusion layer (behind) */}
-                            <h1
-                                aria-hidden="true"
-                                className="max-w-[760px] font-serif text-[clamp(3.5rem,9vw,8rem)] leading-[0.84] tracking-[-0.045em] text-[#8b6914]"
-                                style={{
-                                    textShadow: `
-                                        0 1px 0 #7a5c10,
-                                        0 2px 0 #6b500d,
-                                        0 3px 0 #5c440a,
-                                        0 4px 0 #4d3808,
-                                        0 5px 0 #3e2d06,
-                                        0 6px 0 #2f2204,
-                                        0 7px 0 #201802,
-                                        0 8px 12px rgba(0,0,0,0.5),
-                                        0 8px 25px rgba(0,0,0,0.3)
-                                    `,
-                                }}
-                            >
-                                Golden
-                                <br />
-                                Moment
-                            </h1>
-                            {/* Shiny metallic face layer (front) */}
-                            <h1
-                                className="max-w-[760px] font-serif text-[clamp(3.5rem,9vw,8rem)] leading-[0.84] tracking-[-0.045em] absolute inset-0"
-                                style={{
-                                    background: "linear-gradient(170deg, #fef4c0 0%, #f0d56c 18%, #d4a833 35%, #b8860b 50%, #d4a833 62%, #f0d56c 78%, #fef4c0 100%)",
-                                    WebkitBackgroundClip: "text",
-                                    WebkitTextFillColor: "transparent",
-                                    backgroundClip: "text",
-                                }}
-                            >
+                        <div className="reveal-heading opacity-0">
+                            <h1 className="max-w-[760px] font-display text-[clamp(4rem,10vw,9rem)] leading-[0.82] tracking-[-0.065em] text-cream">
                                 Golden
                                 <br />
                                 Moment
@@ -135,19 +104,19 @@ export default function Hero() {
                     </div>
 
                     <div className="mt-7 sm:mt-8">
-                        <p className="reveal-text invisible max-w-[440px] font-sans text-base leading-[1.7] text-white/80 sm:text-[17px]">
-                            Breakfast, burgers, curries and great coffee — served
-                            daily from 7 AM in the heart of Canberra.
+                        <p className="reveal-text opacity-0 max-w-[440px] font-sans text-base leading-[1.7] text-white/80 sm:text-[17px]">
+                            Good food, thoughtful coffee, and a place to settle into —
+                            served daily in the heart of Canberra.
                         </p>
 
-                        <p className="reveal-text invisible mt-6 font-signature text-[clamp(1.8rem,3.5vw,2.5rem)] text-accent/90 sm:mt-8">
+                        <p className="reveal-text opacity-0 mt-6 font-signature text-[clamp(1.8rem,3.5vw,2.5rem)] text-accent/90 sm:mt-8">
                             come, stay awhile
                         </p>
 
                         <div className="mt-6 flex flex-col gap-4 sm:mt-8 sm:flex-row sm:items-center sm:gap-8">
                             <a
                                 href="#menu"
-                                className="reveal-text invisible group relative inline-flex w-fit items-center gap-3 border-b border-white/60 pb-2 label-micro text-white transition-colors duration-300 hover:border-white"
+                                className="reveal-text opacity-0 group relative inline-flex w-fit items-center gap-3 border-b border-white/60 pb-2 label-micro text-white transition-colors duration-300 hover:border-white"
                             >
                                 <span className="absolute -inset-x-4 -inset-y-4" aria-hidden="true" />
                                 <span>Explore the menu</span>
@@ -163,7 +132,7 @@ export default function Hero() {
 
                             <a
                                 href="#contact"
-                                className="reveal-text invisible group relative inline-flex w-fit items-center gap-3 pb-2 label-micro text-white/60 transition-colors duration-300 hover:text-white"
+                                className="reveal-text opacity-0 group relative inline-flex w-fit items-center gap-3 pb-2 label-micro text-white/60 transition-colors duration-300 hover:text-white"
                             >
                                 <span className="absolute -inset-x-4 -inset-y-4" aria-hidden="true" />
                                 <span>Reserve a table</span>
@@ -181,7 +150,7 @@ export default function Hero() {
                 </div>
 
                 {/* Utility footer — address + hours */}
-                <div className="reveal-footer invisible mt-8 flex flex-col gap-3 border-t border-white/20 pt-4 sm:mt-16 sm:flex-row sm:items-center sm:justify-between">
+                <div className="reveal-footer opacity-0 mt-8 flex flex-col gap-3 border-t border-white/20 pt-4 sm:mt-16 sm:flex-row sm:items-center sm:justify-between">
                     <div className="flex items-center gap-2 label-micro text-white/55">
                         <svg className="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />

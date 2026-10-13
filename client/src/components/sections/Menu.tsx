@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import { useRef, useState } from "react";
 import GMDivider from "@/components/ui/GMDivider";
@@ -134,7 +133,7 @@ export default function Menu() {
                     <div>
                         <p className="label-mini text-accent mb-3">Our Menu</p>
                         <h2 className="font-serif text-[clamp(2.8rem,5vw,4.5rem)] leading-[0.95] tracking-[-0.03em] text-text">
-                            Good food, all day.
+                            Made for lingering.
                         </h2>
                     </div>
                     <p className="font-sans text-[15px] leading-[1.6] text-text-muted max-w-[440px]">
