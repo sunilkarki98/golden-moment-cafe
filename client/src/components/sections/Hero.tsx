@@ -85,7 +85,7 @@ export default function Hero() {
             <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/55 via-transparent to-black/10" />
 
             {/* Content */}
-            <div className="mx-auto flex min-h-[85svh] max-w-[1440px] flex-col justify-end px-6 pb-10 pt-24 sm:px-8 sm:pb-12 lg:px-12 lg:pb-14">
+            <div className="mx-auto flex min-h-[85svh] max-w-[1440px] flex-col justify-end px-6 pb-10 pt-32 sm:px-8 sm:pb-12 md:pt-36 lg:px-12 lg:pb-14">
                 <div className="max-w-[760px]">
                     <div className="mb-5 overflow-hidden sm:mb-6">
                         <span className="reveal-eyebrow opacity-0 block label-mini text-white/75">
