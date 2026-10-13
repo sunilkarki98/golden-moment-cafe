@@ -4,7 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "pnpm -r run dev",
-    "build": "pnpm -r run build",
-    "start": "pnpm -r run start"
+    "build": "pnpm --dir client build",
+    "start": "pnpm --dir client start"
+  },
+  "dependencies": {
+    "next": "16.3.6"
   }
 }
