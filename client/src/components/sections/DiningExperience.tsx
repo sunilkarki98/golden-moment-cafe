@@ -3,241 +3,140 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
-import GMDivider from "@/components/ui/GMDivider";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const scenes = [
+  {
+    src: "/images/place.png",
+    alt: "Golden Moment café exterior and Canberra landscape at golden hour",
+    eyebrow: "01 — Arrive",
+    title: "Come in from the day.",
+    copy: "A warm corner of Canberra, made for the first coffee and the last conversation.",
+    position: "center",
+  },
+  {
+    src: "/images/intro-dining.jpg",
+    alt: "Warm interior dining atmosphere at Golden Moment café",
+    eyebrow: "02 — Settle in",
+    title: "Stay for the moment.",
+    copy: "Sunlight, honest materials and a table that is always ready for one more.",
+    position: "center",
+  },
+  {
+    src: "/images/food-hands.jpg",
+    alt: "Hands preparing food with care at Golden Moment café",
+    eyebrow: "03 — Savour",
+    title: "Made here. Enjoyed slowly.",
+    copy: "Seasonal plates and carefully made coffee, shared at an unhurried pace.",
+    position: "center",
+  },
+];
+
 export default function DiningExperience() {
-    const sectionRef = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const viewportRef = useRef<HTMLDivElement>(null);
 
-    useGSAP(
-        () => {
-            const q = gsap.utils.selector(sectionRef);
-            const prefersReduced = window.matchMedia(
-                "(prefers-reduced-motion: reduce)"
-            ).matches;
+  useGSAP(
+    () => {
+      const root = sectionRef.current;
+      const viewport = viewportRef.current;
+      if (!root || !viewport) return;
 
-            if (prefersReduced) {
-                gsap.set([...q(".anim-img"), ...q(".anim-fade"), ...q(".anim-line")], {
-                    autoAlpha: 1, y: 0, clipPath: "none",
-                });
-                return;
-            }
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const panels = gsap.utils.toArray<HTMLElement>("[data-scene]", root);
+      const captions = gsap.utils.toArray<HTMLElement>("[data-caption]", root);
 
-            const tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: "top 68%",
-                    once: true,
-                },
-                defaults: { ease: "power3.out" },
-            });
+      if (reduceMotion) {
+        gsap.set(panels, { autoAlpha: 1, scale: 1 });
+        gsap.set(captions, { autoAlpha: 1, y: 0 });
+        return;
+      }
 
-            tl.fromTo(
-                q(".anim-img"),
-                { clipPath: "inset(4%)", autoAlpha: 0, scale: 1.04 },
-                { clipPath: "inset(0%)", autoAlpha: 1, scale: 1, duration: 1.4, stagger: 0.2, ease: "power2.out" }
-            )
-            .fromTo(
-                q(".anim-line"),
-                { y: "120%" },
-                { y: "0%", duration: 1, stagger: 0.12, ease: "power4.out" },
-                "-=0.9"
-            )
-            .fromTo(
-                q(".anim-fade"),
-                { autoAlpha: 0, y: 20 },
-                { autoAlpha: 1, y: 0, duration: 0.7, stagger: 0.08 },
-                "-=0.5"
-            );
+      gsap.set(panels, { autoAlpha: 0, scale: 1.12 });
+      gsap.set(panels[0], { autoAlpha: 1, scale: 1 });
+      gsap.set(captions, { autoAlpha: 0, y: 28 });
+      gsap.set(captions[0], { autoAlpha: 1, y: 0 });
 
-            gsap.fromTo(q(".ken-burns"), { scale: 1 }, {
-                scale: 1.06, ease: "none",
-                scrollTrigger: { trigger: sectionRef.current, start: "top bottom", end: "bottom top", scrub: 2 },
-            });
-
-            gsap.to(q(".float-img"), {
-                y: -25, ease: "none",
-                scrollTrigger: { trigger: sectionRef.current, start: "top bottom", end: "bottom top", scrub: 1.5 },
-            });
+      const timeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: root,
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 1,
+          pin: viewport,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
         },
-        { scope: sectionRef }
-    );
+      });
 
-    return (
-        <section
-            ref={sectionRef}
-            id="experience"
-            aria-labelledby="experience-heading"
-            className="relative w-full overflow-hidden bg-[#1a1512]"
-        >
-            {/* Film grain */}
-            <div
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-0 z-[1] opacity-[0.025] mix-blend-overlay"
-                style={{
-                    backgroundImage:
-                        "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E\")",
-                    backgroundSize: "128px 128px",
-                }}
-            />
+      scenes.forEach((_, index) => {
+        if (index === 0) {
+          timeline.to(panels[0], { scale: 1.06, duration: 1, ease: "none" }, 0);
+          return;
+        }
 
-            {/* ════ MAIN LAYOUT CONTAINER ════ */}
-            <div className="relative z-[2] flex flex-col lg:flex-row lg:min-h-[640px]">
+        const at = index;
+        timeline
+          .to(panels[index - 1], { autoAlpha: 0, scale: 0.96, duration: 0.32, ease: "power2.inOut" }, at - 0.14)
+          .to(captions[index - 1], { autoAlpha: 0, y: -20, duration: 0.2, ease: "power2.in" }, at - 0.12)
+          .to(panels[index], { autoAlpha: 1, scale: 1, duration: 0.55, ease: "power2.out" }, at)
+          .fromTo(captions[index], { autoAlpha: 0, y: 28 }, { autoAlpha: 1, y: 0, duration: 0.38, ease: "power3.out" }, at + 0.08)
+          .to(panels[index], { scale: 1.06, duration: 0.82, ease: "none" }, at + 0.18);
+      });
 
-                {/* ── LEFT: Landscape Image (50%) ── */}
-                <div className="relative w-full lg:w-1/2 min-h-[400px] sm:min-h-[460px] lg:min-h-full overflow-hidden">
-                    <div className="anim-img invisible absolute inset-0">
-                        <Image
-                            src="/images/place.png"
-                            alt="Canberra landscape at golden hour"
-                            fill
-                            sizes="(max-width: 1023px) 100vw, 55vw"
-                            className="ken-burns object-cover object-center"
-                        />
-                        {/* Smooth, subtle gradients */}
-                        <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#1a1512]/40 via-[#1a1512]/0 to-[#1a1512]/0" />
-                        <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#1a1512]/20 via-[#1a1512]/0 to-[#1a1512]/0" />
-                        
-                        {/* No right edge gradient: the design uses a sharp, crisp line here */}
-                    </div>
+      return () => {
+        timeline.scrollTrigger?.kill();
+        timeline.kill();
+      };
+    },
+    { scope: sectionRef }
+  );
 
-                    {/* Overlays on landscape */}
-                    <div className="relative z-10 flex flex-col justify-between h-full min-h-[400px] sm:min-h-[460px] lg:min-h-[640px] p-7 sm:p-10">
-                        {/* Top: GOLDEN MOMENT */}
-                        <div className="anim-fade invisible">
-                            <span className="label-micro tracking-[0.25em] text-white/55">
-                                Golden Moment
-                            </span>
-                        </div>
-                        {/* Bottom: SEASONAL · LOCAL · SHARED */}
-                        <div className="anim-fade invisible flex items-center gap-4">
-                            <span className="label-micro text-white/45">Seasonal</span>
-                            <span aria-hidden="true" className="w-1 h-1 rounded-full bg-white/25" />
-                            <span className="label-micro text-white/45">Local</span>
-                            <span aria-hidden="true" className="w-1 h-1 rounded-full bg-white/25" />
-                            <span className="label-micro text-white/45">Shared</span>
-                        </div>
-                    </div>
-                </div>
-
-                {/* ── RIGHT: Dark Editorial Panel (50%) ── */}
-                <div className="w-full lg:w-1/2 flex items-center bg-[#1a1512]">
-                    {/* Notice the large lg:pl-[140px] to make room for the floating image */}
-                    <div className="w-full px-8 py-14 sm:px-12 sm:py-18 lg:pl-[140px] lg:pr-12 lg:py-16 xl:pl-[160px] xl:pr-16">
-                        <div className="max-w-[480px] mx-auto lg:mx-0">
-
-                            {/* Eyebrow */}
-                            <div className="anim-fade invisible flex items-center gap-4 mb-8">
-                                <span className="w-7 h-px bg-[#c4956a]/50" />
-                                <span className="label-micro text-[#c4956a] tracking-[0.2em]">
-                                    The Experience
-                                </span>
-                            </div>
-
-                            {/* Headline */}
-                            <h2 id="experience-heading" className="mb-7">
-                                <span className="block overflow-hidden pb-1">
-                                    <span className="anim-line block font-serif text-[clamp(2.6rem,4.5vw,4rem)] leading-[1.05] tracking-[-0.02em] text-[#f4efe6]">
-                                        Stay for
-                                    </span>
-                                </span>
-                                <span className="block overflow-hidden pb-1">
-                                    <span className="anim-line block font-serif text-[clamp(2.6rem,4.5vw,4rem)] leading-[1.05] tracking-[-0.02em] text-[#f4efe6]">
-                                        the moment.
-                                    </span>
-                                </span>
-                            </h2>
-
-                            {/* Body */}
-                            <p className="anim-fade invisible font-sans text-[14px] sm:text-[14.5px] leading-[1.85] text-[#c9b89f]/70">
-                                Relaxed in Canberra, Golden Moment is more than
-                                a café — it&apos;s a place to slow down, connect and
-                                savour the simple things. Great coffee, seasonal food
-                                and a warm, welcoming space, right in the heart
-                                of our city.
-                            </p>
-
-                            {/* Handwritten signature */}
-                            <p
-                                className="anim-fade invisible mt-8 text-[1.4rem] sm:text-[1.6rem] text-[#c4956a] -rotate-[2deg] origin-left"
-                                style={{ fontFamily: 'var(--font-signature, "Segoe Print", "Bradley Hand", cursive)' }}
-                            >
-                                made here, enjoyed slowly.
-                            </p>
-
-                            {/* CTA Button — solid gold pill */}
-                            <Link
-                                href="#visit"
-                                className="anim-fade invisible group inline-flex items-center gap-3 mt-10 bg-[#c4956a] text-[#1a1512] rounded-full px-8 py-3.5 transition-all duration-300 hover:bg-[#d4a87a] hover:scale-[1.02] active:scale-[0.98]"
-                            >
-                                <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.15em]">
-                                    Our Place
-                                </span>
-                                <svg
-                                    aria-hidden="true"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1"
-                                >
-                                    <path d="M5 12h14M12 5l7 7-7 7" />
-                                </svg>
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-
-                {/* ── FLOATING INTERIOR IMAGE (positioned on the parent, not clipped) ── */}
-                <div
-                    className="anim-img invisible float-img hidden lg:block absolute z-30"
-                    style={{
-                        left: "50%",
-                        top: "50%",
-                        transform: "translate(-50%, -50%)",
-                        width: "clamp(180px, 16vw, 240px)",
-                    }}
-                >
-                    <div className="relative aspect-[3/4] w-full overflow-hidden shadow-2xl border border-white/80">
-                        <Image
-                            src="/images/intro-dining.jpg"
-                            alt="Inside Golden Moment — warm dining atmosphere"
-                            fill
-                            sizes="240px"
-                            className="object-cover"
-                        />
-                    </div>
-                    <div className="mt-3 text-center bg-[#1a1512]/90 backdrop-blur-sm py-2.5 px-3 rounded-xl border border-white/10 shadow-lg mx-auto w-max">
-                        <p className="font-sans text-[10px] uppercase tracking-[0.18em] text-[#f4efe6]/90 font-semibold drop-shadow-sm">
-                            Inside Golden Moment
-                        </p>
-                        <p className="font-sans text-[10px] text-[#c9b89f]/80 mt-1 drop-shadow-sm">
-                            Canberra · Est. 2024
-                        </p>
-                    </div>
-                </div>
-
-                {/* ── Vertical "01 / 03" label ── */}
-                <div
-                    className="anim-fade invisible hidden lg:block absolute z-30 left-4 top-1/2 -translate-y-1/2"
-                >
-                    <span
-                        className="label-micro text-white/30 tracking-[0.2em] text-[10px]"
-                        style={{ writingMode: "vertical-rl", textOrientation: "mixed" }}
-                    >
-                        01 / 03
-                    </span>
-                </div>
+  return (
+    <section ref={sectionRef} id="experience" aria-labelledby="experience-heading" className="relative h-[300svh] bg-[#171310]">
+      <div ref={viewportRef} className="relative h-svh min-h-[620px] w-full overflow-hidden bg-[#171310]">
+        <div className="absolute inset-0">
+          {scenes.map((scene, index) => (
+            <div key={scene.src} data-scene className="absolute inset-0 will-change-transform">
+              <Image src={scene.src} alt={scene.alt} fill priority={index === 0} sizes="100vw" className="object-cover" style={{ objectPosition: scene.position }} />
+              <div aria-hidden="true" className="absolute inset-0 bg-[#171310]/25" />
+              <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-[#171310]/85 via-[#171310]/25 to-transparent" />
+              <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-[#171310]/80 via-transparent to-[#171310]/25" />
             </div>
+          ))}
+        </div>
 
-            {/* ── Bottom GM Divider ── */}
-            <GMDivider variant="dark" className="relative z-[2]" />
-        </section>
-    );
+        <div className="relative z-10 flex h-full flex-col justify-between px-6 py-7 sm:px-10 sm:py-9 lg:px-16 lg:py-12">
+          <div className="flex items-center justify-between text-white/65">
+            <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.28em]">Golden Moment</span>
+            <span className="font-sans text-[10px] uppercase tracking-[0.22em]">Canberra · Australia</span>
+          </div>
+
+          <div className="max-w-[620px] pb-8 sm:pb-12 lg:pb-16">
+            {scenes.map((scene, index) => (
+              <div key={scene.eyebrow} data-caption className={index === 0 ? "" : "absolute bottom-8 left-6 right-6 sm:bottom-12 sm:left-10 sm:right-10 lg:bottom-16 lg:left-16"}>
+                <p className="mb-5 font-sans text-[10px] font-semibold uppercase tracking-[0.28em] text-[#d4a87a]">{scene.eyebrow}</p>
+                <h2 id={index === 0 ? "experience-heading" : undefined} className="max-w-[620px] font-serif text-[clamp(3rem,8vw,7rem)] leading-[0.92] tracking-[-0.055em] text-[#f5efe5]">{scene.title}</h2>
+                <p className="mt-6 max-w-[360px] font-sans text-sm leading-7 text-white/70 sm:text-[15px]">{scene.copy}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex items-end justify-between">
+            <Link href="#visit" className="group inline-flex items-center gap-3 border-b border-white/45 pb-2 font-sans text-[10px] font-semibold uppercase tracking-[0.22em] text-white transition-colors hover:border-[#d4a87a] hover:text-[#d4a87a]">
+              Visit our place
+              <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span>
+            </Link>
+            <span className="hidden font-sans text-[10px] uppercase tracking-[0.22em] text-white/45 sm:block">Scroll to explore</span>
+          </div>
+        </div>
+
+        <div aria-hidden="true" className="pointer-events-none absolute bottom-0 left-0 z-20 h-px w-full bg-white/20" />
+      </div>
+    </section>
+  );
 }
